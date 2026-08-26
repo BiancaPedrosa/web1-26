@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros Favoritos</title>
+</head>
+    <body>
+        <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .tabela-wrap{
+            overflow-x: auto;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td{
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th{
+            background-color: #333;
+            color: white;
+        }
+
+        tbody tr:nth-child(even){
+            background-color: #eeeeee;
+        }
+
+        img{
+            width: 90px;
+            height: 130px;
+            object-fit: cover;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>Meus Livros Favoritos</h1>
+
+<div class="tabela-wrap">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Ano</th>
+                <th>Capa</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Dom Casmurro</td>
+                <td>Machado de Assis</td>
+                <td>1899</td>
+                <td>
+                    <img src="https://th.bing.com/th/id/R.5b5b24cb3e897c2ad3fd73d5a99df451?rik=JI%2bJX%2fwTFrflWg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-h10g_q2V4tw%2fVXn3Oa19L9I%2fAAAAAAAAAEQ%2f49jZFOReki0%2fs1600%2flivro%2bdom%2bcasmurro%2b6.jpg&ehk=CqC3Z2batxF0hbh3Y%2f%2fWqePXq%2fWKyQj7TMtWBCIjxc8%3d&risl=&pid=ImgRaw&r=0" alt="Dom Casmurro">
+                </td>
+            </tr>
+
+            <tr>
+                <td>O Pequeno Príncipe</td>
+                <td>Antoine de Saint-Exupéry</td>
+                <td>1943</td>
+                <td>
+                    <img src="https://m.media-amazon.com/images/I/71LJ4k-k9hL._SL1500_.jpg" alt="Pequeno Príncipe">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Harry Potter e a Pedra Filosofal</td>
+                <td>J. K. Rowling</td>
+                <td>1997</td>
+                <td>
+                    <img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg" alt="Harry Potter">
+                </td>
+            </tr>
+
+            <tr>
+                <td>O Hobbit</td>
+                <td>J. R. R. Tolkien</td>
+                <td>1937</td>
+                <td>
+                    <img src="https://m.media-amazon.com/images/I/91M9xPIf10L.jpg" alt="O Hobbit">
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>

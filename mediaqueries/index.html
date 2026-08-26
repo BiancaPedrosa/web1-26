@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padaria do Bairro</title>
+    <style>
+        body { font-family: sans-serif; background-color: #fdf5e6; margin: 0; }
+        header { background: #d2691e; color: white; text-align: center; padding: 20px; }
+        
+        /* Layout para Computador */
+        .container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            padding: 20px; 
+        }
+
+        .cartao { 
+            background: white; 
+            border: 2px solid #d2691e; 
+            padding: 15px; 
+            width: 30%; /* Lado a lado no PC */
+            text-align: center;
+        }
+
+        /* --- DESAFIO: AJUSTE PARA CELULAR --- */
+        @media (max-width: 600px) {
+            .container {
+                /* ADICIONE O CÓDIGO AQUI: para empilhar os itens */
+                flex-direction: column;
+            }
+
+            .cartao {
+                /* ADICIONE O CÓDIGO AQUI: para ocupar quase toda a largura */
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Padaria Delícia de Pão</h1>
+    </header>
+    <div class="container">
+        <div class="cartao"><h3>🥖 Pão Francês</h3><p>Quentinho e crocante.</p></div>
+        <div class="cartao"><h3>🥐 Croissant</h3><p>Massa folhada amanteigada.</p></div>
+        <div class="cartao"><h3>🍞 Pão de Forma</h3><p>Ideal para o café.</p></div>
+    </div>
+</body>
+</html>
