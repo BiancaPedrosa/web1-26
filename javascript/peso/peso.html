@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/peso.css">
+	<title>Peso Ideal</title>
+</head>
+<body>
+	<header>
+		<h1> Calculadora Peso Ideal </h1>
+	</header>
+	
+	<form name="ficha">
+	
+		<div>
+			<label for="altura">Altura: 
+			<input type='TEXT' id="altura"name='altura' size=6 />
+		</label>
+		</div>
+		<div>
+			<label for="sexo">Sexo: 
+				<select  name='sexo'> 
+					<option value='feminino'>feminino</option>
+					<option value='masculino'>masculino</option>
+				</select>
+			</label>
+		</div>
+		<div>
+		<button type=button onclick=calculapeso()>Envia!</button>
+		</div>
+		
+		<div>
+			<label for ="pesoideal">PESO IDEAL:
+				<input type='text' id="pesoideal" name='pesoideal' disabled />
+			</label>
+		</div>
+		</FORM>
+	
+	</body>
+	<script type="text/javascript" src="js/peso.js"></script>
+</html>

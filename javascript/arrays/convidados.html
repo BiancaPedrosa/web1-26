@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestão de Convidados</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f0f9; padding: 40px; display: flex; justify-content: center; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 400px; }
+        h2 { color: #8e44ad; border-bottom: 2px solid #f1e6f7; padding-bottom: 10px; }
+        .controles { display: flex; gap: 5px; margin-bottom: 20px; }
+        input { flex-grow: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 8px 15px; cursor: pointer; border: none; border-radius: 4px; transition: 0.3s; }
+        .btn-add { background-color: #8e44ad; color: white; }
+        .btn-vip { background-color: #f1c40f; color: #333; width: 100%; margin-top: 10px; font-weight: bold; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+        .vip-tag { background: #f1c40f; font-size: 10px; padding: 2px 6px; border-radius: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Lista de Convidados 👥</h2>
+    
+    <div class="controles">
+        <input type="text" id="novoConvidado" placeholder="Nome do convidado...">
+        <button class="btn-add" onclick="adicionar()">Adicionar</button>
+    </div>
+
+    <button class="btn-vip" onclick="filtrarVIPs()">Ver apenas VIPs (Letra A)</button>
+    <button style="width: 100%; margin-top: 5px;" onclick="ordenar()">Ordenar Alfabeticamente</button>
+
+    <ul id="listaDisplay">
+        </ul>
+</div>
+
+<script>
+    // 1. Array Inicial
+    let convidados = ["Ana", "Carlos", "Beatriz", "Daniel", "Elena", "Fabio"];
+
+    function atualizarInterface(listaParaExibir = convidados) {
+        const ul = document.getElementById('listaDisplay');
+        ul.innerHTML = "";
+
+        listaParaExibir.forEach(nome => {
+            const li = document.createElement('li');
+            li.innerHTML = `${nome} ${nome[0].toUpperCase() === 'A' ? '<span class="vip-tag">VIP</span>' : ''}`;
+            ul.appendChild(li);
+        });
+    }
+
+    function adicionar() {
+        const input = document.getElementById('novoConvidado');
+        if (input.value.trim() !== "") {
+            // 2. Uso do .push()
+            convidados.push(input.value);
+            input.value = "";
+            atualizarInterface();
+        }
+    }
+
+    function ordenar() {
+        // 3. Uso do .sort() para ordem alfabética
+        convidados.sort();
+        atualizarInterface();
+    }
+
+    function filtrarVIPs() {
+        // 4. Uso do .filter() para criar uma sublista
+        const vips = convidados.filter(nome => nome[0].toUpperCase() === 'A');
+        
+        console.log("Convidados VIP encontrados:", vips);
+        atualizarInterface(vips);
+        
+        // Exemplo de .includes() no console para o aluno
+        if (convidados.includes("Beatriz")) {
+            console.log("Beatriz está na lista e confirmada!");
+        }
+    }
+
+    // Inicialização
+    atualizarInterface();
+</script>
+
+</body>
+</html>

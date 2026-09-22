@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Preços - Importação</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; padding: 40px; display: flex; justify-content: center; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 450px; }
+        h2 { color: #27ae60; margin-top: 0; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
+        .cotacao { background: #e8f5e9; padding: 10px; border-radius: 6px; margin-bottom: 20px; font-weight: bold; color: #2e7d32; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background-color: #f8f9fa; color: #7f8c8d; text-transform: uppercase; font-size: 0.8em; }
+        .btn-converter { width: 100%; padding: 12px; background-color: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .btn-converter:hover { background-color: #219150; }
+        .price-brl { font-weight: bold; color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Conversor de Importação</h2>
+    
+    <div class="cotacao" id="infoCambio">
+        Câmbio de hoje: US$ 1.00 = R$ 5.50
+    </div>
+
+    <button class="btn-converter" onclick="converterPrecos()">Converter Lista para Real</button>
+
+    <table id="tabelaPrecos">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço (USD)</th>
+                <th>Preço (BRL)</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    // 1. Array inicial de preços em Dólar
+    const precosDolar = [50.00, 120.50, 10.00, 450.00, 89.90];
+    const taxaConversao = 5.50;
+
+    // Função para carregar a tabela inicialmente
+    function renderizarTabela(precosReais = []) {
+        const corpo = document.getElementById('corpoTabela');
+        corpo.innerHTML = ""; // Limpa a tabela
+
+        precosDolar.forEach((preco, index) => {
+            const linha = document.createElement('tr');
+            
+            // Se o preço convertido já existir, mostra ele, senão mostra "-"
+            const valorBRL = precosReais[index] ? `R$ ${precosReais[index]}` : "---";
+
+            linha.innerHTML = `
+                <td>Produto ${index + 1}</td>
+                <td>$ ${preco.toFixed(2)}</td>
+                <td class="price-brl">${valorBRL}</td>
+            `;
+            corpo.appendChild(linha);
+        });
+    }
+
+    function converterPrecos() {
+        
+
+        /* 3. Processamento (Iteração sobre o array original)
+            //3.1. Criação do novo array vazio
+            let precosReal = [];
+            for (let i = 0; i < precosDolar.length; i++) {
+                let calculo = precosDolar[i] * taxaConversao;
+                
+                // Adicionando ao novo array com 2 casas decimais
+                precosReal.push(calculo.toFixed(2));
+            }
+        */
+        // .map() percorre cada 'preco' e já cria o novo array 'precosReal'
+        const precosReal = precosDolar.map(preco => {
+            return (preco * taxaConversao).toFixed(2);
+        });
+        // 4. Log para o aluno conferir no console
+        console.log("Preços em Dólar:", precosDolar);
+        console.log("Preços em Real:", precosReal);
+
+        // Atualiza a interface
+        renderizarTabela(precosReal);
+    }
+
+    // Inicializa a tabela sem os valores convertidos
+    renderizarTabela();
+</script>
+
+</body>
+</html>

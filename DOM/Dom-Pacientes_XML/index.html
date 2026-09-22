@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Nutricao</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class = "container">
+        <h1>Clínica de Nutrição</h1>
+        <form>
+            <h1>Adicionar novo paciente</h1>
+    
+            Nome:
+            <input type="text" id="name">
+            <br><br>
+            
+            <table>
+                <tr>
+                    <td>Peso: </td>
+                    <td>Altura: </td>
+                    <td>% de Gordura: </td>
+                </tr>
+    
+                <tr>
+                    <td>
+                        <input type="text" id = "peso">
+                    </td>
+                    <td>
+                        <input type="text" id = "altura">
+                    </td>
+                    <td>
+                        <input type="text" id = "gordura">
+                    </td>
+                </tr>
+            </table>
+    
+            <br>
+            <input type="button" value="Adicionar" id = "btAdicionar" onclick="calcular()">
+            <input type="button" value="Carregar" id = "btCarregar" onclick="loadXMLDoc()">
+        
+        </form>
+    </div>
+
+    <footer onload="loadXMLDoc()">
+        <div class = "footer">
+            <h2>Meus Pacientes</h2>
+            <table id = "tbPacientes">
+                <tr>
+                    <th>Nome</th>
+                    <th>Peso</th>
+                    <th>Altura</th>
+                    <th>% de Gordura</th>
+                    <th>IMC</th>
+                </tr>
+            </table>
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>

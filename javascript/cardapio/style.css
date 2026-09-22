@@ -1,0 +1,56 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+#cardapio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.produto-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.produto-card h2 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.produto-card p {
+    font-size: 0.9em;
+    color: #666;
+    flex-grow: 1;
+}
+
+.produto-card .preco {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    margin-top: 15px;
+}

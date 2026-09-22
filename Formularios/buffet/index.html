@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    
+<div id="tudo">
+<header id="titulo">
+    <h4>Calculadora de Orçamento de Festa</h4>
+</header>
+<form>
+    <div>
+        <label for="pessoas">Nº de pessoas
+             <input name="opcao" type="number" id="pessoas" required>
+         </label>
+    </div>
+   
+    <div>
+        <h4>Tipo de buffet</h3>
+         <label for="custo1">
+            <input name="radio" type="radio" value="50" id="custo1">
+           Buffet Básico (R$ 50 por pessoa)
+        </label>
+        <label for ="custo2">
+           <input name="radio" type="radio" value="80" id="custo2">
+           Buffet Premium (R$ 80 por pessoa)
+        </label>
+    </div>
+    <h4>Adicionais</h4>
+    <label for="decoracao">
+        <input type="checkbox" name="adicional" id="decoracao" value="200">
+        Decoração Extra (R$ 200)
+    </label>
+     <label for="dj">
+    <input type="checkbox" name="adicional" id="dj" value="350"> DJ e iluminação (R$ 350)
+    </label>
+    <label for="fotografo">
+    <input type="checkbox" name="adicional" id="fotografo"value="450"> Fotografo Profissional (R$ 450)</label>
+
+
+</form>
+<br>
+<input type="submit" value="Calcular orçamento" id="calcular" onclick="calcular()">
+<div id="mostrartotal">
+
+</div>
+</div>
+<script>
+    function calcular(){
+        let total = 0;
+
+        let Pessoas = parseInt(document.getElementById("pessoas").value);
+        let Custo_por_pessoa = parseInt(document.querySelector('input[name="radio"]:checked').value);
+        let adicional = document.querySelectorAll('input[name="adicional"]:checked');
+        let div = document.getElementById("mostrartotal")
+        
+        adicional.forEach(function(checkbox) {
+                   total += parseInt(checkbox.value);
+        });
+
+        total += Custo_por_pessoa * Pessoas;
+
+        texto = "Orçamento total: R$ " + total;
+        
+        div.innerHTML = texto;
+    }
+</script>
+</body>
+</html>

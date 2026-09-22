@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+    <CD>
+        <NOME>Gabriel</NOME>
+        <PESO>90</PESO>
+        <ALTURA>1.80</ALTURA>
+        <GORDURA>13</GORDURA>
+        <IMC>30</IMC>
+    </CD>
+    <CD>
+        <NOME>DANIELE</NOME>
+        <PESO>73</PESO>
+        <ALTURA>1.60</ALTURA>
+        <GORDURA>15</GORDURA>
+        <IMC>30</IMC>
+    </CD>
+</CATALOG>

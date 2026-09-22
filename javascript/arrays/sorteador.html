@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorteador de Números</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding: 20px; background-color: #f4f4f4; }
+        .container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 350px; }
+        input { width: 100%; padding: 8px; margin: 10px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; padding: 12px; background-color: #ff99f0; border: none; border-radius: 5px; color: white; font-weight: bold; cursor: pointer; }
+        button:hover { background-color: #f77ce6; }
+        #resultado { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .bola { background: #ff99f0; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sorteador de Números</h2>
+    
+    <label>Quantos números?:</label>
+    <input type="number" id="quantidade" value="3">
+
+    <label>Entre:</label>
+    <input type="number" id="min" value="1">
+
+    <label>Até:</label>
+    <input type="number" id="max" value="10">
+
+    <button onclick="gerarSorteio()">Sortear</button>
+
+    <h3>Números Sorteados:</h3>
+    <div id="resultado"></div>
+</div>
+
+<script>
+    function gerarSorteio() {
+        // 1. Captura de valores dos inputs
+        const qtd = parseInt(document.getElementById('quantidade').value);
+        const min = parseInt(document.getElementById('min').value);
+        const max = parseInt(document.getElementById('max').value);
+        const display = document.getElementById('resultado');
+        
+        // Limpa o resultado anterior
+        display.innerHTML = "";
+
+        // 2. Validação básica (Importante para alunos de TADS)
+        if (qtd > (max - min + 1)) {
+            alert("A quantidade de números é maior que o intervalo disponível!");
+            return;
+        }
+
+        // 3. Lógica do Sorteio com Array
+        let numerosSorteados = [];
+
+        while (numerosSorteados.length < qtd) {
+            // Fórmula sugerida: Math.random() * (max - min + 1) + min
+            let numero = Math.floor(Math.random() * (max - min + 1)) + min;
+
+            // Verificação de não repetição (includes)
+            if (!numerosSorteados.includes(numero)) {
+                numerosSorteados.push(numero);
+            }
+        }
+
+        // 4. Ordenação Crescente
+        // Importante: .sort() sem função de comparação ordena como string!
+        numerosSorteados.sort((a, b) => a - b);
+
+        // 5. Exibição no HTML (DOM)
+        numerosSorteados.forEach(num => {
+            const bola = document.createElement('div');
+            bola.classList.add('bola');
+            bola.innerText = num;
+            display.appendChild(bola);
+        });
+    }
+</script>
+
+</body>
+</html>

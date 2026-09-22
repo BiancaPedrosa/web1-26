@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Checkbox</title>
+</head>
+<body>
+   <input type="checkbox" name="myCheckbox" id="myCheckbox" value="ok"><label for="myCheckbox">Marque este campo</label>
+    <script>
+       const checkbox = document.getElementById("myCheckbox");
+       checkbox.addEventListener('change', function() {
+         if (this.checked) {
+            console.log(this.value);
+         }
+       });
+   </script>
+ 
+</body>
+</html>

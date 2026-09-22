@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Checkbox</title>
+</head>
+<body>
+   <input type="checkbox" name="transporte" id="bike" value="bike"><label for="bike">Bike</label>
+   <input type="checkbox" name="transporte" id="car" value="car"><label for="car">Car</label>
+   <input type="checkbox" name="transporte" id="bus" value="bus"><label for="bus">Bus</label>
+   <script>
+       const checkboxes = document.getElementsByName("transporte");
+      checkboxes.forEach(checkbox => {
+         checkbox.addEventListener('change', function() {
+            if (this.checked) {
+               console.log(this.value);
+            }
+         });
+      });
+   </script>
+ 
+</body>
+</html>

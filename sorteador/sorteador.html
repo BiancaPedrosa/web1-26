@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteador de Números</title>
+    <link type="text/css" rel="stylesheet" href="sorteador.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Sorteador de Números</h1>
+        <form id="sorteioForm">
+            <label for="quantidade">Quantos números?:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" required>
+            
+            <label for="inicio">entre:</label>
+            <input type="number" id="inicio" name="inicio" required>
+            
+            <label for="fim">até:</label>
+            <input type="number" id="fim" name="fim" required>
+            
+            <button type="button" onclick="sortear()">Sortear</button>
+
+            <div id="resultado">
+                <h2>Números Sorteados:</h2>
+                <ul id="numerosSorteados"></ul>
+            </div>
+        </form>
+    </div>
+
+    <script src="sorteador.js"></script>
+
+        
+</body>
+</html>

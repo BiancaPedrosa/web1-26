@@ -1,0 +1,127 @@
+/* Reset básico para consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f5f1; /* Verde acinzentado muito claro */
+    color: #2d3436;
+    line-height: 1.6;
+}
+
+/* Nav: Barra de navegação com links  */
+nav {
+    background-color: #2d5a27; /* Verde floresta */
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none; /* Remove os pontos da lista */
+}
+
+nav li {
+    display: inline; /* Coloca os links lado a lado */
+    margin: 0 20px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+nav a:hover {
+    color: #a2d2a2; /* Efeito ao passar o mouse */
+}
+
+/* Header: Cabeçalho da planta */
+header {
+    background-color: #ffffff;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid #8b4513; /* Marrom terra */
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #2d5a27;
+    font-size: 2.5em;
+}
+
+/* Main: Container centralizado para o conteúdo */
+main {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    overflow: hidden; /* Limpa os floats internos  */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Article: Conteúdo independente da planta  */
+article {
+    margin-bottom: 30px;
+}
+
+/* Section: Divisões de Cuidados e Plantio */
+section {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 4px solid #a2d2a2;
+}
+
+section h2 {
+    color: #8b4513;
+    margin-bottom: 10px;
+}
+
+/* Figure: Imagem da planta com float*/
+figure {
+    float: right; /* Alinha a imagem à direita do texto  */
+    width: 300px;
+    margin-left: 20px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+}
+
+figcaption {
+    font-style: italic;
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Footer: Rodapé com informações de fonte */
+footer {
+    clear: both; /* Garante que o rodapé fique abaixo dos elementos flutuantes  */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #a2d2a2;
+}
+
+/* Span: Para destacar termos técnicos (inline) */
+.nome-cientifico {
+    font-style: italic;
+    color: #8b4513;
+    font-weight: normal;
+}

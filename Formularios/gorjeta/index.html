@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Gorjeta</title>
+    <!-- Incluindo a fonte Inter do Google Fonts para uma estética moderna -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <style>
+        /* Estilização CSS */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box; /* Garante que o padding não afeta a largura total */
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.9rem;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #27ae60;
+            background-color: #e8f5e9;
+            padding: 1.25rem;
+            border-radius: 8px;
+            display: none; /* Escondido por padrão, será exibido pelo JavaScript */
+        }
+        
+        #error-message {
+            margin-top: 1rem;
+            color: #c0392b;
+            font-weight: 600;
+            display: none;
+        }
+
+        /* Media Queries para responsividade em telas menores */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de Gorjeta</h1>
+
+        <form id="tipForm">
+            <div class="form-group">
+                <label for="billAmount">Valor da Conta (R$)</label>
+                <input type="number" id="billAmount" name="billAmount" min="0" step="0.01" placeholder="Ex: 100.00" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tipPercentage">Porcentagem da Gorjeta (%)</label>
+                <input type="number" id="tipPercentage" name="tipPercentage" min="0" max="100" placeholder="Ex: 15" required>
+            </div>
+            
+            <button type="button" id="calculateBtn">Calcular</button>
+        </form>
+
+        <div id="result"></div>
+        <div id="error-message"></div>
+    </div>
+
+    <script>
+        // JavaScript para a lógica de cálculo
+        
+        // Seleciona os elementos do DOM para manipulação
+        const calculateBtn = document.getElementById('calculateBtn');
+        const billAmountInput = document.getElementById('billAmount');
+        const tipPercentageInput = document.getElementById('tipPercentage');
+        const resultDiv = document.getElementById('result');
+        const errorMessageDiv = document.getElementById('error-message');
+
+        // Adiciona um "ouvinte de evento" para o clique no botão
+        calculateBtn.addEventListener('click', function() {
+            // Obtém os valores dos campos de entrada
+            const billAmount = Number(billAmountInput.value);
+            const tipPercentage = Number(tipPercentageInput.value);
+
+            // Valida se os valores são números válidos
+            if (isNaN(billAmount) || isNaN(tipPercentage) || billAmount < 0 || tipPercentage < 0) {
+                errorMessageDiv.textContent = 'Por favor, insira valores numéricos válidos.';
+                errorMessageDiv.style.display = 'block';
+                resultDiv.style.display = 'none';
+                return;
+            }
+
+            // Esconde a mensagem de erro se a validação for bem-sucedida
+            errorMessageDiv.style.display = 'none';
+
+            // Calcula o valor da gorjeta e o valor total
+            const tipAmount = billAmount * (tipPercentage / 100);
+            const totalAmount = billAmount + tipAmount;
+
+            // Exibe o resultado na tela
+            // toFixed(2) é usado para garantir 2 casas decimais e replace para o formato brasileiro
+            resultDiv.textContent = `Total a pagar: R$ ${totalAmount.toFixed(2).replace('.', ',')}`;
+            resultDiv.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

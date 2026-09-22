@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/fun.js"></script>
+    <title>Clinica de Nutrição</title>
+    </head>
+    <body>
+    <h2>Clinica de Nutrição</h2>    
+    <div>
+        <h1>Adicionar novo paciente</h1>
+        <form onsubmit="adicionarPaciente(); return false;">
+            <label for="txtNome">Nome:</label>
+            <input type="text" id="txtNome" required><br>
+            <alabel>Peso(kg):</label>
+            <input type="number" id="txtPeso" min="1" required><br>
+            <label for="txtAltura">Altura:</label>
+            <input type="number" id="txtAltura" step="0.01"  min="1" required><br>
+            <label for="txtGordura">Gordura Corporal:</label>
+            <input type="number" id="txtGordura" min="1" required>
+            <input type="submit" id="btmAdd" value="Adicionar">
+        </form>
+    </div>
+    <div>
+        <h1>Meus Pacientes</h1>
+        <table id="tablePaciente" class="table">
+            <tr>
+                <td>Nome</td>
+                <td>Peso(kg)</td>
+                <td>Altura</td>
+                <td>Gordura Corporal(%)</td>
+                <td>IMC</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

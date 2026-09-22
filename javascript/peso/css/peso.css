@@ -1,0 +1,63 @@
+body {
+  
+  font-family: Arial, sans-serif;
+  margin: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  text-align: left;
+}
+
+form {
+	background-color: #C7F9CC;
+  	max-width: 500px; /* Limita a largura máxima */
+    margin: 0 auto;    /* Centraliza o bloco na tela */
+    padding: 0 20px;   /* Evita que o conteúdo cole nas bordas em celulares */
+    width:60%;       /* Garante que ele seja responsivo */
+};
+h1, h2 {
+  text-align: center;
+  color: #22577A;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #22577A;
+  color: #57CC99;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 90%
+}
+
+button:hover {
+  background-color: #57CC99;
+}
+
+input[type="text"],
+select {
+  background-color: #80ED99;
+  color: #22577A;
+  border: 1px solid gray;
+  width: 60%;
+  padding: 10px;
+}
+#mensagem {
+  margin-top: 10px;
+  color: #22577A;
+  font-weight: 700;
+}
+div{
+	padding: 10px;
+}
+@media (max-width: 600px) {
+	input[type="text"],select {
+  	width: 100%;
+  	padding: 10px;
+  }
+}

@@ -1,0 +1,42 @@
+
+        /* PADRÃO: MOBILE (Amarelo) */
+        body {
+            font-family: sans-serif;
+            background-color: #ffdcad;
+            text-align: center;
+            transition: 0.5s;
+        }
+
+        h1 {
+            background-color: rgb(97, 74, 12);
+            padding: 25px;
+            color:#d1a564;
+
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 100px;
+        }
+
+        .card {
+            width: 700px;
+            height: 180px;
+            background-color: rgb(252, 215, 116);
+            color: white;
+            border-radius: 30px;
+
+        }
+
+        /* TABLET: 601px até 1024px (Verde) */
+        @media screen and (min-width: 601px) {
+            body { background-color: #ffdcad; }
+            .container {flex-direction: row; justify-content: center;}
+        }
+
+        /* DESKTOP: Acima de 1025px (Azul) */
+        @media screen and (min-width: 1025px) {
+            body { background-color: #ffdcad; }
+        }

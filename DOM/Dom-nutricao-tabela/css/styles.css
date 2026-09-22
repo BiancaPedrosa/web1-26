@@ -1,0 +1,65 @@
+form {
+    border: 2px solid;
+    padding: 20px; 
+    width: 80%;
+    resize: horizontal;
+    overflow: auto;
+  }
+div{
+    padding-left: 40px;
+}
+h2{
+    background-color: black;
+    border: solid;
+    border-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 45px;
+}
+label{
+   /* padding-right: 180px;*/
+}
+a{
+    padding-right: 200px;
+}
+#txtNome{
+    width: 690px;
+}
+#txtPeso, #txtAltura, #txtGordura{
+    width: 222px;
+}
+#btmAdd{
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: black;
+    transition-duration: 0.4s;
+}  
+#btmAdd:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
