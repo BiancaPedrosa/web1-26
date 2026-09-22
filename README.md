@@ -11,8 +11,10 @@ Repositório de projetos práticos do curso **Web Estático** (graduação, TADS
 - [`tabela de livros`](./tabela%20de%20livros) — estruturação de dados em tabela HTML.
 - [`Formularios`](./Formularios) — exercícios de formulários HTML (buffet, checkbox, gorjeta).
 - [`sorteador`](./sorteador) — sorteador de números com JavaScript.
-- [`DOM`](./DOM) — manipulação do DOM (pacientes em XML, tabela e objeto de nutrição).
-- [`javascript`](./javascript) — lógica em JavaScript (arrays, calculadora, cardápio, peso).
+- [`DOM`](./DOM) — manipulação do DOM (pacientes em XML, tabela e objeto de nutrição, cardápio).
+- [`arrays`](./arrays) — exercícios de lógica com arrays em JavaScript.
+- [`calculadora`](./calculadora) — calculadora em JavaScript.
+- [`peso`](./peso) — cálculo de peso em JavaScript.
 - [`padaria`](./padaria) — exercício de demonstração de padaria.
 - [`pizzaria`](./pizzaria) — projeto de cardápio de pizzaria.
 
