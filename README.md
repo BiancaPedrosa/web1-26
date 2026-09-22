@@ -6,8 +6,7 @@ Repositório de projetos práticos do curso **Web Estático** (graduação, TADS
 ## Estrutura de Projetos
 
 - [`lista de plantas`](./lista%20de%20plantas) — listagem de plantas com HTML.
-- [`Plantas-semanticas`](./Plantas-semanticas) — uso de tags semânticas HTML aplicado ao tema de plantas.
-- [`plantas_semanticas`](./plantas_semanticas) — variação do exercício de plantas com tags semânticas.
+- [`plantas_semanticas`](./plantas_semanticas) — uso de tags semânticas HTML aplicado ao tema de plantas.
 - [`mediaqueries`](./mediaqueries) — responsividade com CSS Media Queries.
 - [`tabela de livros`](./tabela%20de%20livros) — estruturação de dados em tabela HTML.
 - [`Formularios`](./Formularios) — exercícios de formulários HTML (buffet, checkbox, gorjeta).
