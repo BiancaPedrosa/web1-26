@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Configurador de relatórios</title>
+     <link rel="stylesheet"href="style.css">
+</head>
+<body>
+    <!-- Selecionar campos disponíveis para um relatório-->
+     <h1>Configurador de relatórios</h1>
+    <div class="container">
+        <div class="box">
+        <h3>Campos Disponíveis</h3>
+         <ul id="disponiveis">  
+            <li data-id="data">Data da Venda</li>     
+            <li data-id="nome">Nome do Cliente</li>
+            <li data-id="valor">Valor Total</li>
+            <li data-id="status">Status do Pedido</li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h3>Campos no Relatório</h3>
+        <ul id="selecionados">
+        </ul>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

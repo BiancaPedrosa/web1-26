@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Relatórios Dinâmico - IFSP</title>
+    <style>
+        :root {
+            --primary: #004a8d;
+            --secondary: #28a745;
+            --bg: #f4f7f6;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); padding: 20px; }
+        h2 { text-align: center; color: var(--primary); }
+
+        /* Container do Seletor */
+        .seletor-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .painel {
+            width: 300px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .painel h3 { margin-top: 0; font-size: 1rem; color: #555; border-bottom: 2px solid var(--bg); padding-bottom: 10px; }
+
+        ul { list-style: none; padding: 0; min-height: 200px; }
+
+        li {
+            background: #fff;
+            margin: 8px 0;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-left: 5px solid var(--primary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            user-select: none;
+        }
+
+        li:hover { background: #f0f7ff; transform: translateX(5px); }
+        
+        /* Estilo para itens selecionados */
+        #selecionados li { border-left-color: var(--secondary); }
+
+        /* Botão e Tabela */
+        .controles { text-align: center; margin-bottom: 40px; }
+        
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #003566; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        th { background: var(--primary); color: white; padding: 12px; text-align: left; text-transform: uppercase; font-size: 0.85rem; }
+        td { padding: 12px; border-bottom: 1px solid #eee; color: #444; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h2>Gerador de Relatórios Customizáveis</h2>
+
+    <div class="seletor-wrapper">
+        <div class="painel">
+            <h3>Campos Disponíveis</h3>
+            <ul id="disponiveis">
+                <li data-key="id">ID</li>
+                <li data-key="nome">Nome do Cliente</li>
+                <li data-key="cidade">Cidade</li>
+                <li data-key="venda">Valor da Venda</li>
+            </ul>
+        </div>
+
+        <div class="painel">
+            <h3>Colunas no Relatório</h3>
+            <ul id="selecionados">
+                </ul>
+        </div>
+    </div>
+
+    <div class="controles">
+        <button id="btnGerar">Gerar Relatório Dinâmico</button>
+    </div>
+
+    <div id="areaRelatorio">
+        </div>
+
+    <script>
+        const listaDisponiveis = document.getElementById('disponiveis');
+        const listaSelecionados = document.getElementById('selecionados');
+        const btnGerar = document.getElementById('btnGerar');
+        const areaRelatorio = document.getElementById('areaRelatorio');
+
+        // 1. Lógica de Interação (Mover Itens)
+        function gerenciarClique(e) {
+            if (e.target.tagName === 'LI') {
+                const destino = e.target.parentElement.id === 'disponiveis' 
+                                ? listaSelecionados 
+                                : listaDisponiveis;
+                destino.appendChild(e.target);
+            }
+        }
+
+        listaDisponiveis.addEventListener('click', gerenciarClique);
+        listaSelecionados.addEventListener('click', gerenciarClique);
+
+        // 2. Lógica de Dados (JSON + Render)
+        btnGerar.onclick = async () => {
+            // Obtém as chaves que o usuário escolheu
+            const lis = document.querySelectorAll('#selecionados li');
+            const chavesSelecionadas = Array.from(lis).map(item => item.dataset.key);
+
+            if (chavesSelecionadas.length === 0) {
+                alert("Por favor, selecione pelo menos uma coluna!");
+                return;
+            }
+
+            try {
+                // Em produção, você usaria: const response = await fetch('dados.json');
+                // Aqui vamos usar o mock para garantir que funcione em qualquer ambiente
+                const dados = await simularFetchJSON();
+                renderizarTabela(dados, chavesSelecionadas);
+            } catch (erro) {
+                console.error("Erro ao processar dados:", erro);
+            }
+        };
+
+        function renderizarTabela(dados, colunas) {
+            let tabela = `<table><thead><tr>`;
+            
+            // Cria cabeçalho
+            colunas.forEach(col => tabela += `<th>${col}</th>`);
+            tabela += `</tr></thead><tbody>`;
+
+            // Cria linhas filtrando apenas as colunas escolhidas
+            dados.forEach(registro => {
+                tabela += `<tr>`;
+                colunas.forEach(col => {
+                    tabela += `<td>${registro[col] || '-'}</td>`;
+                });
+                tabela += `</tr>`;
+            });
+
+            tabela += `</tbody></table>`;
+            areaRelatorio.innerHTML = tabela;
+        }
+
+        // Simulação de arquivo JSON externo
+        function simularFetchJSON() {
+            return new Promise((resolve) => {
+                const mockData = [
+                    { "id": 1, "nome": "Ana Silva", "cidade": "Campinas", "venda": "R$ 1.200,00" },
+                    { "id": 2, "nome": "João Souza", "cidade": "Salto", "venda": "R$ 850,00" },
+                    { "id": 3, "nome": "Marta Lima", "cidade": "Bragança", "venda": "R$ 2.100,00" },
+                    { "id": 4, "nome": "Lucas Ferreira", "cidade": "Campinas", "venda": "R$ 3.400,00" }
+                ];
+                setTimeout(() => resolve(mockData), 300);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+     Calculadora: <input type="text" id="numero" value="2*2+1">
+     <input type="button" value="Calcular" onclick="calcular()">
+     Resultado: <span id="resultado">clique em calcular</span>
+     <script>
+     function calcular() {
+          const entrada = document.getElementById("numero").value;
+          const resultado = eval(entrada);
+          document.getElementById("resultado").innerHTML = resultado;
+          const historico = document.createElement("p");
+          historico.innerHTML = entrada + " = " + resultado;
+          document.body.appendChild(historico);
+     }
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+body {
+  font-family: Calibri, Arial, sans-serif;
+  background-color: #F5F6FB;
+  color: #1F2437;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+h1 {
+  color: #151935;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 1px 4px rgba(21, 25, 53, 0.1);
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #C7CCE6;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 8px;
+  padding: 10px;
+  background-color: #151935;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1E2559;
+}
+
+table {
+  width: 100%;
+  margin-top: 25px;
+  border-collapse: collapse;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(21, 25, 53, 0.1);
+}
+
+thead {
+  background-color: #151935;
+  color: #FFFFFF;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  font-size: 13.5px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #EEF0F9;
+}
+
+.btn-editar, .btn-excluir {
+  border: none;
+  border-radius: 4px;
+  padding: 5px 9px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn-editar {
+  background-color: #F0DB4F;
+  color: #151935;
+}
+
+.btn-excluir {
+  background-color: #E4573D;
+  color: #FFFFFF;
+}
