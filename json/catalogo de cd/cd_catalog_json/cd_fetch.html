@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD Collection</title>
+
+    <style>
+      table,th,td {
+        border : 1px solid black;
+        border-collapse: collapse;
+      }
+      th,td {
+        padding: 5px;
+      }
+    </style>
+<body>
+  <button type="button" onclick="loadJson()">Get my CD collection</button>
+  <br><br>
+  <table id="demo"></table>
+  <div id="mensagem"></div>
+
+  <script>
+   const loadJson = () => {
+      let url = "cd_catalog.json";
+      let html = '';
+      let trow="<tr><th>Artist</th><th>Title</th></tr>";
+      fetch(url).then(response => response.json())
+         .then((CD) => {
+         
+         for (i = 0; i <CD.length; i++) { 
+            trow += 
+            "<tr><td>" + CD[i].ARTIST +
+            "</td><td>" +CD[i].TITLE + "</td></tr>";
+            }
+         document.getElementById("demo").innerHTML = trow;
+         })
+         .catch((erro) => {
+            let div = document.getElementById("mensagem");
+            console.log(erro);
+            div.innerHTML = "Página Inexistente.";
+         })
+   }
+  </script>
+
+</body>
+</html>

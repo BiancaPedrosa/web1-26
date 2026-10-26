@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+<h1>Noticias atraves de XML</h1>
+<button type="button" onclick="loadDoc()">Noticia 1</button>
+<button type="button" onclick="loadDoc2()">Noticia 2</button>
+<button type="button" onclick="loadDoc3()">Noticia 3</button>
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+      console.log(this.responseText);
+    }
+  };
+
+
+
+  xhttp.open("GET", "not1.xml", true);
+  xhttp.send();
+}
+
+function loadDoc2() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+      console.log(this.responseText);
+    }
+  };
+
+
+
+  xhttp.open("GET", "not2.xml", true);
+  xhttp.send();
+}
+
+function loadDoc3() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+      console.log(this.responseText);
+    }
+  };
+
+  xhttp.open("GET", "not3.xml", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>

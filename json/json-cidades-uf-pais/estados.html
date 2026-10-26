@@ -1,0 +1,36 @@
+<!-- https://servicodados.ibge.gov.br/api/docs/localidades#api-UFs-estadosGet-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introdução a Ajax</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      function getStates() {
+        let url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
+        let html = "";
+        fetch(url)
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json);
+            for (let i = 0; i < json.length; i++) {
+              html += json[i].nome + "-" + json[i].sigla + "<br>";
+            }
+            console.log(html);
+            let div = document.getElementById("estados");
+            div.innerHTML = html;
+          })
+          .catch((erro) => {
+            let div = document.getElementById("estados");
+            console.log(erro);
+            div.innerHTML = "Página Inexistente.";
+          });
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Exemplo HTTP Request e Json</h1>
+    <button onclick="getStates();">Envia Requisição</button>
+    <div id="estados"></div>
+  </body>
+</html>

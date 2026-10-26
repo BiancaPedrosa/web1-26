@@ -54,3 +54,69 @@ h1 {
     text-align: right;
     margin-top: 15px;
 }
+
+.btn-adicionar {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-adicionar:hover {
+    background-color: #43a047;
+}
+
+#carrinho {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 1160px;
+    margin: 0 auto 20px;
+}
+
+#carrinho h2 {
+    margin-top: 0;
+}
+
+#carrinho-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#carrinho-lista li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#carrinho-vazio {
+    color: #666;
+}
+
+.btn-remover {
+    padding: 6px 10px;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-remover:hover {
+    background-color: #c62828;
+}
+
+#carrinho-total {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 15px;
+}

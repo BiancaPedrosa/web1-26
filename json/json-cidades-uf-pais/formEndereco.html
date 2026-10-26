@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Cadastro</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box; /* Garante que o padding não estoure a largura */
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        #message {
+            font-size: 0.8rem;
+            margin: -10px 0 10px 5px;
+            color: #d9534f;
+        }
+
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .row > div {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+    </style>
+    <script>
+     const getCountries = () => {
+          // Use esta URL no lugar da anterior
+          let url = "https://countriesnow.space/api/v1/countries/positions";
+
+          // O JSON desta API é um pouco diferente, então o loop muda para:
+          fetch(url)
+          .then(res => res.json())
+          .then(res => {
+               let dados = res.data; // Os países ficam dentro da propriedade 'data'
+               dados.sort((a, b) => (a.name > b.name ? 1 : -1));
+               
+               let html = '<option value="">Selecione um País</option>';
+               dados.forEach(pais => {
+                    html += `<option value="${pais.name}">${pais.name}</option>`;
+               });
+               document.getElementById("pais").innerHTML = html;
+     })};
+
+      const getStates = () => {
+        let url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome";
+        let html = '<option value="">Selecione o Estado</option>';
+        fetch(url)
+          .then((response) => response.json())
+          .then((json) => {
+            for (let i = 0; i < json.length; i++) {
+              html += `<option value="${json[i].sigla}">${json[i].nome}</option>`;
+            }
+            document.getElementById("state").innerHTML = html;
+          });
+      };
+
+      const getCities = () => {
+        let state = document.getElementById("state").value;
+        if(!state) return;
+        let url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios?orderBy=nome`;
+        let html = '<option value="">Selecione a Cidade</option>';
+        fetch(url)
+          .then((response) => response.json())
+          .then((json) => {
+            for (let i = 0; i < json.length; i++) {
+              html += `<option value="${json[i].nome}">${json[i].nome}</option>`;
+            }
+            document.getElementById("city").innerHTML = html;
+          });
+      };
+    </script>
+</head>
+
+<body onload="getCountries(); getStates();">
+    <form id="meuForm">
+      <h2>Cadastro de Usuário</h2>
+
+      <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" placeholder="Ex: Bianca Pedrosa" />
+      </div>
+
+      <div class="form-group">
+          <label for="dataNasc">Data de Nascimento</label>
+          <input type="date" id="dataNasc" />
+          <p id="message"></p>
+      </div>
+
+      <div class="form-group">
+          <label for="pais">País</label>
+          <select name="pais" id="pais">
+            <option value="Brasil" selected>Brasil</option>
+          </select>
+      </div>
+
+      <div class="row">
+          <div class="form-group">
+              <label for="state">Estado (UF)</label>
+              <select name="state" id="state" onchange="getCities();"></select>
+          </div>
+          <div class="form-group">
+              <label for="city">Cidade</label>
+              <select name="city" id="city">
+                  <option value="">Selecione o estado</option>
+              </select>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="form-group">
+              <label for="bairro">Bairro</label>
+              <input type="text" id="bairro" placeholder="Bairro" />
+          </div>
+          <div class="form-group">
+              <label for="rua">Rua</label>
+              <input type="text" id="rua" placeholder="Logradouro" />
+          </div>
+      </div>
+
+      <button type="button">Finalizar Cadastro</button>
+    </form>
+
+    <script>
+        // Validação simples de data
+        document.getElementById("dataNasc").addEventListener("input", function (e) {
+          const dataNascimento = e.target.value;
+          const msg = document.getElementById("message");
+          if (dataNascimento) {
+            msg.innerHTML = "Formato válido";
+            msg.style.color = "#28a745";
+          } else {
+            msg.innerHTML = "Data Inválida";
+            msg.style.color = "#d9534f";
+          }
+        });
+        // Opção A: No final do body ou dentro de um DOMContentLoaded
+          document.addEventListener('DOMContentLoaded', () => {
+          getCountries();
+});
+    </script>
+</body>
+</html>

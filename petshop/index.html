@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amigo Fiel — Agendamento de Banho e Tosa (GABARITO)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>🐾 Amigo Fiel — Agendamento de Banho e Tosa</h1>
+  <p class="lead">GABARITO — solução de referência comentada para a avaliação prática (v2: 3 arquivos separados, sem botão de remover no histórico).</p>
+
+  <form id="formAgendamento" novalidate>
+
+    <div id="erroGeral"></div>
+
+    <fieldset>
+      <legend>Dados do tutor</legend>
+
+      <label for="nomeTutor">Nome do tutor</label>
+      <input type="text" id="nomeTutor" name="nomeTutor" required minlength="3" placeholder="Ex: Maria Silva">
+      <div class="erro" id="erroNomeTutor"></div>
+
+      <label for="telefone">Telefone</label>
+      <input type="tel" id="telefone" name="telefone" required
+             pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" placeholder="(11) 91234-5678">
+      <div class="erro" id="erroTelefone"></div>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required placeholder="tutor@email.com">
+      <div class="erro" id="erroEmail"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Dados do pet</legend>
+
+      <label for="nomePet">Nome do pet</label>
+      <input type="text" id="nomePet" name="nomePet" required placeholder="Ex: Rex">
+      <div class="erro" id="erroNomePet"></div>
+
+      <label>Porte do animal</label>
+      <div class="radio-group">
+        <div class="radio-row">
+          <input type="radio" id="portePequeno" name="porte" value="pequeno" required>
+          <label for="portePequeno" style="margin:0;font-weight:normal;">Pequeno (até 10 kg) — R$ 40,00</label>
+        </div>
+        <div class="radio-row">
+          <input type="radio" id="porteMedio" name="porte" value="medio">
+          <label for="porteMedio" style="margin:0;font-weight:normal;">Médio (10 a 25 kg) — R$ 60,00</label>
+        </div>
+        <div class="radio-row">
+          <input type="radio" id="porteGrande" name="porte" value="grande">
+          <label for="porteGrande" style="margin:0;font-weight:normal;">Grande (acima de 25 kg) — R$ 90,00</label>
+        </div>
+      </div>
+      <div class="erro" id="erroPorte"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Serviços extras (opcional)</legend>
+      <div class="checkbox-group">
+        <div class="checkbox-row">
+          <input type="checkbox" id="extraHidratacao" name="extras" value="15" data-nome="Hidratação">
+          <label for="extraHidratacao" style="margin:0;font-weight:normal;">Hidratação — R$ 15,00</label>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="extraUnhas" name="extras" value="10" data-nome="Corte de unhas">
+          <label for="extraUnhas" style="margin:0;font-weight:normal;">Corte de unhas — R$ 10,00</label>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="extraDentes" name="extras" value="12" data-nome="Escovação de dentes">
+          <label for="extraDentes" style="margin:0;font-weight:normal;">Escovação de dentes — R$ 12,00</label>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="extraPerfume" name="extras" value="8" data-nome="Perfume finalizador">
+          <label for="extraPerfume" style="margin:0;font-weight:normal;">Perfume finalizador — R$ 8,00</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Pagamento</legend>
+
+      <label for="pagamento">Forma de pagamento</label>
+      <select id="pagamento" name="pagamento" required>
+        <option value="">Selecione...</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="cartao">Cartão</option>
+        <option value="pix">Pix (5% de desconto adicional)</option>
+      </select>
+      <div class="erro" id="erroPagamento"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Agendamento</legend>
+
+      <label for="data">Data</label>
+      <input type="date" id="data" name="data" required>
+      <div class="erro" id="erroData"></div>
+
+      <label for="horario">Horário</label>
+      <input type="time" id="horario" name="horario" required>
+      <div class="erro" id="erroHorario"></div>
+
+      <label for="observacoes">Observações (opcional)</label>
+      <textarea id="observacoes" name="observacoes" rows="2" maxlength="200"></textarea>
+      <div class="obs-count"><span id="contadorObs">0</span>/200</div>
+    </fieldset>
+
+    <button type="submit">Calcular orçamento</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <!-- ===================== PARTE 5 — HISTÓRICO (DOM) ===================== -->
+  <div id="historico-wrap">
+    <h2>Histórico de agendamentos desta sessão</h2>
+    <p>Cada item abaixo foi criado dinamicamente com <code>document.createElement</code> + <code>appendChild</code>, sem usar <code>innerHTML</code> (não há mais botão de remover — a Parte 5 do enunciado não exige isso nesta versão).</p>
+    <ul id="historico"></ul>
+    <p id="historicoVazio">Nenhum agendamento calculado ainda.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
